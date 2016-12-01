@@ -29,6 +29,10 @@ app.get('/cities.csv', function(req, res){
 	res.send('../lib/cities.csv');
 });
 
+app.get('/tweets.json', function(req, res){
+	res.send('../lib/tweets.json');
+});
+
 
 //custom 404 page
 app.use(function(req, res){
