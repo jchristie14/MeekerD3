@@ -3,6 +3,7 @@ var express = require('express');
 var app = express();
 
 app.use(express.static('lib'));
+app.use(express.static('public'));
 
 //set up hanlebars view engine
 var handlebars = require('express-handlebars')
@@ -28,12 +29,21 @@ app.get('/tweets', function(req, res){
 	res.render('tweets');
 });
 
+app.get('/soccer', function(req, res){
+	res.render('soccer');
+});
+
+//data routes
 app.get('/cities.csv', function(req, res){
 	res.send('../lib/cities.csv');
 });
 
 app.get('/tweets.json', function(req, res){
 	res.send('../lib/tweets.json');
+});
+
+app.get('/worldcup.csv', function(req, res){
+	res.send('../lib/worldcup.csv');
 });
 
 
