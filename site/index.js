@@ -13,16 +13,19 @@ app.set('view engine', 'handlebars');
 app.set('port', process.env.PORT || 3000);
 
 app.get('/', function(req, res){
-	res.type('text/plain');
-	res.send('Information!!!');
+	res.render('home');
 });
 
 app.get('/helloWorld', function(req, res){
 	res.render('helloWorld');
 });
 
-app.get('/csv', function(req, res){
-	res.render('csv');
+app.get('/cities', function(req, res){
+	res.render('cities');
+});
+
+app.get('/tweets', function(req, res){
+	res.render('tweets');
 });
 
 app.get('/cities.csv', function(req, res){
