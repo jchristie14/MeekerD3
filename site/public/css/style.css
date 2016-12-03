@@ -5,3 +5,27 @@ body {
 svg {
 	background-color: #ffffff;
 }
+
+/*#vizcontainer {
+	display: table;
+	margin: 50px auto;
+}*/
+
+a {
+	text-decoration: none;
+	font-size: large;
+	color: #080808;
+	margin: 1em;
+}
+
+nav ul {
+	background-color: #ffffff;
+}
+
+nav ul li {
+	display: inline-block;
+	background-color: #ffffff;
+	padding: 2em;
+	height: 4vw;
+	width: 4vw;
+}
