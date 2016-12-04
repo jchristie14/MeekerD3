@@ -19,13 +19,25 @@ a {
 }
 
 nav ul {
-	background-color: #ffffff;
+	background-color: #4682b4;
+	border-radius: 2vw;
 }
 
 nav ul li {
 	display: inline-block;
-	background-color: #ffffff;
+	background-color: #4682b4;
 	padding: 2em;
-	height: 4vw;
-	width: 4vw;
+}
+
+.homeLink {
+	background-color: #000000;
+	border-radius: 1vw;
+}
+
+.homeLink div {
+	background-color: #ff0000;
+	margin: 1vw;
+	width: 50%;
+	border-radius: .5vw;
+	padding: 2vw;
 }

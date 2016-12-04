@@ -13,7 +13,7 @@ circle {
 }
 
 circle.active {
-	fll: red;
+	fill: red;
 }
 
 circle.inactive {
