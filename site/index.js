@@ -33,6 +33,10 @@ app.get('/soccer', function(req, res){
 	res.render('soccer');
 });
 
+app.get('/moneyandfriends', function(req, res){
+	res.render('moneyandfriends');
+});
+
 //data routes
 app.get('/cities.csv', function(req, res){
 	res.send('../lib/cities.csv');
