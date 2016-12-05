@@ -27,7 +27,7 @@ function createSoccerViz(){
 			.attr("r",40)
 			.transition()
 			.duration(500)
-			.attr("r",20)
+			.attr("r",20);
 			// .style("fill","pink")
 			// .style("stroke","black")
 			// .style("stroke-width","1px");
@@ -38,6 +38,13 @@ function createSoccerViz(){
 			.attr("y",30)
 			// .style("font-size","10px")
 			.text(function(d){return d.team;});
+
+		d3.selectAll("g.overallG").insert("image", "text")
+			.attr("xlink:href", function(d){
+				return "images/"+d.team+".png";
+			})
+			.attr("width","45px").attr("height","20px").attr("x","-22")
+			.attr("y","-10");
 
 		var dataKeys=d3.keys(incomingData[0]).filter(function(el){
 			return el != "team" && el != "region";
@@ -50,12 +57,17 @@ function createSoccerViz(){
 			.html(function(d) {return d;});
 
 		function buttonClick(datapoint){
-			var maxValue=d3.max(incomingData, function(d){
-				return parseFloat(d[datapoint]);
+			var maxValue=d3.max(incomingData, function(el){
+				return parseFloat(el[datapoint]);
 			});
+
+			var tenColorScale=d3.scaleOrdinal(d3.schemeCategory10).domain(["UEFA","CONMEBOL","CAF","AFC"]);
+
 
 			var radiusScale=d3.scaleLinear()
 				.domain([0,maxValue]).range([2,20]);
+
+			var colorQuantize=d3.scaleQuantize().domain([0,maxValue]).range(colorbrewer.Reds[5]);
 			
 			var ybRamp=d3.scaleLinear()
 				.interpolate(d3.interpolateHsl)
@@ -66,7 +78,7 @@ function createSoccerViz(){
 					return radiusScale(d[datapoint]);
 				})
 				.style("fill", function(d){
-					return ybRamp(d[datapoint]);
+					return colorQuantize(d[datapoint]);
 				});
 
 
@@ -108,5 +120,15 @@ function createSoccerViz(){
 		};
 
 		teamG.select("text").style("pointer-events","none");
+
+		d3.text("/partials/modal.handlebars", function(data){
+			d3.select("body").append("div").attr("id","modal").html(data);
+		});
+
+		teamG.on("click", teamClick);
+
+		function teamClick(d){
+			d3.selectAll("td.data").data(d3.values(d)).html(function(p){return p});
+		};
 	}
 }
