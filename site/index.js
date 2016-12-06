@@ -45,6 +45,10 @@ app.get('/tweetinterpolation', function(req, res){
 	res.render('tweetinterpolation');
 });
 
+app.get('/movies', function(req, res){
+	res.render('movies');
+});
+
 //data routes
 app.get('/cities.csv', function(req, res){
 	res.send('../lib/cities.csv');
@@ -64,6 +68,10 @@ app.get('/boxplot.csv', function(req, res){
 
 app.get('/tweetdata.csv', function(req, res){
 	res.send('../lib/tweetdata.csv');
+});
+
+app.get('/movies.csv', function(req, res){
+	res.send('../lib/movies.csv');
 });
 
 
