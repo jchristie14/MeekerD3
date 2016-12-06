@@ -56,16 +56,19 @@ function dataViz(){
 
 		var tweetLine=d3.line()
 			.x(function(d){return xScale(d.day);})
-			.y(function(d){return yScale(d.tweets);});
+			.y(function(d){return yScale(d.tweets);})
+			.curve(d3.curveBasis);
 
 		var retweetLine=d3.line()
 			.x(function(d){return xScale(d.day);})
-			.y(function(d){return yScale(d.retweets);});
+			.y(function(d){return yScale(d.retweets);})
+			.curve(d3.curveStep);
 			
 
 		var favLine=d3.line()
 			.x(function(d){return xScale(d.day);})
-			.y(function(d){return yScale(d.favorites);});
+			.y(function(d){return yScale(d.favorites);})
+			.curve(d3.curveCardinal);
 
 		d3.select("svg")
 			.append("path")
