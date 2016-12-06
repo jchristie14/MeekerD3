@@ -37,6 +37,14 @@ app.get('/moneyandfriends', function(req, res){
 	res.render('moneyandfriends');
 });
 
+app.get('/sitevisitors', function(req, res){
+	res.render('sitevisitors');
+});
+
+app.get('/tweetinterpolation', function(req, res){
+	res.render('tweetinterpolation');
+});
+
 //data routes
 app.get('/cities.csv', function(req, res){
 	res.send('../lib/cities.csv');
@@ -48,6 +56,14 @@ app.get('/tweets.json', function(req, res){
 
 app.get('/worldcup.csv', function(req, res){
 	res.send('../lib/worldcup.csv');
+});
+
+app.get('/boxplot.csv', function(req, res){
+	res.send('../lib/boxplot.csv');
+});
+
+app.get('/tweetdata.csv', function(req, res){
+	res.send('../lib/tweetdata.csv');
 });
 
 
