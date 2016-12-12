@@ -49,6 +49,10 @@ app.get('/movies', function(req, res){
 	res.render('movies');
 });
 
+app.get('/pie', function(req, res){
+	res.render('pie');
+});
+
 //data routes
 app.get('/cities.csv', function(req, res){
 	res.send('../lib/cities.csv');
