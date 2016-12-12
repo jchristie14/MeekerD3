@@ -2,16 +2,37 @@
 
 function dataViz(){
 	
-	var pieChart=d3.pie();
-	var yourPie=pieChart([1,1,2]);
+	// var pieChart=d3.pie();
+	// var yourPie=pieChart([1,1,2]);
 	
-	var newArc=d3.arc();
-	newArc.innerRadius(0).outerRadius(100)
+	// var newArc=d3.arc();
+	// newArc.innerRadius(0).outerRadius(100)
 
 	var fillScale=d3.scaleOrdinal()
 		.range(["#fcd88a","#cf7c1c","#93c464","#75734f"])
 
+	d3.json("tweets.json", pieChart)
 
+		function pieChart(data){
+			var nestedTweets=d3.nest()
+				.key(d=>d.user)
+				.entries(data.tweets);
+			nestedTweets.forEach(d=>{
+				d.numTweets=d.values.length;
+				d.numFavorites=d3.sum(d.values, p=>p.favorites.length)
+				d.numRetweets=d3.sum(d.values, p=>p.retweets.length)
+			});
+
+			var pieChart=d3.pie();
+
+			var newArc=d3.arc();
+			newArc
+				.innerRadius(20)
+				.outerRadius(100)
+
+			pieChart.value(d=>d.numTweets);
+
+			var yourPie=pieChart(nestedTweets);
 
 	d3.select("svg")
 		.append("g")
@@ -26,6 +47,6 @@ function dataViz(){
 		.style("stroke","black")
 		.style("stroke-width","2px");
 
-
+		}
 
 }
