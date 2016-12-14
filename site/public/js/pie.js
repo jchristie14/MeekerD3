@@ -47,6 +47,12 @@ function dataViz(){
 		.style("stroke","black")
 		.style("stroke-width","2px");
 
+	pieChart.value(d=>d.numFavorites)
+	d3.selectAll("path").data(pieChart(nestedTweets))
+		.transition()
+		.duration(1000)
+		.attr("d", newArc);
+
 		}
 
 }

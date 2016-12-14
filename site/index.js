@@ -78,6 +78,10 @@ app.get('/movies.csv', function(req, res){
 	res.send('../lib/movies.csv');
 });
 
+app.get('/Artworks.json', function(req, res){
+	res.send('../lib/Artworks.json');
+});
+
 
 //custom 404 page
 app.use(function(req, res){
